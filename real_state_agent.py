@@ -50,8 +50,8 @@ def run_test_interface(
     output_fn("=== Real State Agent Test Interface ===")
 
     try:
-        api_key = get_openai_api_key(env_path)
-        output_fn(f"API key loaded: {mask_key(api_key)}")
+        get_openai_api_key(env_path)
+        output_fn("API key loaded successfully.")
     except ValueError as exc:
         output_fn(str(exc))
         return
