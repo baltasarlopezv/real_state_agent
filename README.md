@@ -11,7 +11,7 @@ Minimal AI real estate agent integrated with the OpenAI API.
 
 ```bash
 export OPENAI_API_KEY="your_api_key"
-python /home/runner/work/real_state_agent/real_state_agent/real_state_agent.py "I need a 2-bedroom apartment in Madrid under 400k"
+python real_state_agent.py "I need a 2-bedroom apartment in Madrid under 400k"
 ```
 
 The script sends your request to OpenAI Chat Completions and prints recommendations.

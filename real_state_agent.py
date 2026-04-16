@@ -52,7 +52,7 @@ def request_openai_completion(
         return json.loads(response.read().decode("utf-8"))
 
 
-def generate_real_state_response(user_request: str, api_key: str | None = None, model: str = "gpt-4o-mini") -> str:
+def generate_real_estate_response(user_request: str, api_key: str | None = None, model: str = "gpt-4o-mini") -> str:
     key = api_key or os.getenv("OPENAI_API_KEY")
     if not key:
         raise ValueError("OPENAI_API_KEY is required. Set the environment variable or pass api_key explicitly.")
@@ -62,6 +62,10 @@ def generate_real_state_response(user_request: str, api_key: str | None = None, 
     return response["choices"][0]["message"]["content"]
 
 
+def generate_real_state_response(user_request: str, api_key: str | None = None, model: str = "gpt-4o-mini") -> str:
+    return generate_real_estate_response(user_request=user_request, api_key=api_key, model=model)
+
+
 def main() -> int:
     if len(sys.argv) < 2:
         print("Usage: python real_state_agent.py \"I need a 2-bedroom apartment in Madrid under 400k\"")
@@ -69,7 +73,7 @@ def main() -> int:
 
     request_text = " ".join(sys.argv[1:]).strip()
     try:
-        answer = generate_real_state_response(request_text)
+        answer = generate_real_estate_response(request_text)
         print(answer)
         return 0
     except ValueError as error:
